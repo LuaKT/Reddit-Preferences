@@ -9,13 +9,16 @@ from flask import Flask, abort, request, redirect
 from uuid import uuid4
 import requests
 import requests.auth
-import urllib.parse
 import argparse
 import webbrowser
 import json
 import threading
 import time
 import logging
+try:
+    from urllib.parse import urlencode
+except ImportError:
+    from urllib import urlencode
 
 CLIENT_ID = '7fPE1QshJ4xXmQ'
 CLIENT_SECRET = None
@@ -50,7 +53,7 @@ def create_authorization_url():
               "redirect_uri": REDIRECT_URI,
               "duration": "temporary",
               "scope": "identity account subscribe read"}
-    url = "https://ssl.reddit.com/api/v1/authorize?" + urllib.parse.urlencode(params)
+    url = "https://ssl.reddit.com/api/v1/authorize?" + urlencode(params)
     return url
     
 def get_access_token(code):
