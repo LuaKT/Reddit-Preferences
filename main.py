@@ -124,7 +124,7 @@ def authenticated_request(method, endpoint, data='{}', extra_headers={}):
     headers = {"Authorization": "bearer " + access_token}
     headers.update(base_headers())
     headers.update(extra_headers)
-    response = session.request(method, 'https://oauth.reddit.com/' + endpoint, data=data, headers=headers)
+    response = session.request(method, 'https://oauth.reddit.com/' + endpoint, json=data, headers=headers)
     return response.json()
         
 
