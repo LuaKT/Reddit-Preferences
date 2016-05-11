@@ -9,7 +9,7 @@ from flask import Flask, abort, request, redirect
 from uuid import uuid4
 import requests
 import requests.auth
-import urllib
+import urllib.parse
 import argparse
 import webbrowser
 import json
